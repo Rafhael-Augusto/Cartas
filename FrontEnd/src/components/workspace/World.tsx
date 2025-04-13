@@ -34,7 +34,7 @@ function World(){
 
     useEffect(() => {
         const fetchLetters = async () => {
-            const res = await fetch('http://127.0.0.1:8000/api/letters/')
+            const res = await fetch('https://cartas-1cc4.onrender.com/api/letters/')
             const data = await res.json()
             setLetters(data)
         }
