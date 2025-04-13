@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import * as S from './styles'
 
@@ -12,38 +12,55 @@ const songs = [
 function PlayMusic() {
     const audioRef = useRef<HTMLAudioElement>(null)
 
-    const [isPlaying, setIsPlaying] = useState(true)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [currentTrack, setCurrentTrack] = useState(0)
 
-    const playMusic = () => {
-        const randomIndex = Math.floor(Math.random() * songs.length)
-        const selectedSong = songs[randomIndex]
-
+    useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.src = selectedSong
-            audioRef.current.volume = 0.05
+            audioRef.current.src = songs[currentTrack]
+            audioRef.current.loop = true
 
             if (isPlaying) {
                 audioRef.current.play()
-            } else {
+            }
+
+            audioRef.current.volume = 0.1
+        }
+    }, [currentTrack, isPlaying])
+
+    const PlayMusic = () => {
+        if (audioRef.current) {
+            
+            if (isPlaying) {
                 audioRef.current.pause()
+            } else {
+                audioRef.current.play()
             }
 
             setIsPlaying(!isPlaying)
         }
     }
 
-    const changeVolume = (e: string) => {
-        const volume = Number(e)
+    const nextTrack = () => {
+        const nextSong = (currentTrack + 1) % songs.length
+        setCurrentTrack(nextSong)
+
         if (audioRef.current) {
-            audioRef.current.volume = volume
+            audioRef.current.src = songs[currentTrack]
         }
+    }
+
+    const prevTrack = () => {
+        setCurrentTrack((current) => current === 0 ? songs.length - 1 : current - 1)
     }
 
     return (
         <S.Wrapper>
             <audio ref={audioRef} />
-            <S.Pause  onClick={playMusic}>{!isPlaying ? '⏸ Pause' : '▶ Play'}</S.Pause>
-            <input onChange={(e) => changeVolume(e.target.value)} type="number" step={0.1} min={0} max={1} />
+            <input type="number" step={0.1} min={0} max={1} />
+            <S.Arrow onClick={prevTrack}>{`<`}</S.Arrow>
+            <S.Pause onClick={() => {PlayMusic()}}>{!isPlaying ? '▶ Play' : '⏸ Pause'}</S.Pause>
+            <S.Arrow onClick={nextTrack}>{`>`}</S.Arrow>
         </S.Wrapper>
     )
 }

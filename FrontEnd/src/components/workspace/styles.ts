@@ -25,7 +25,6 @@ export const World = styled.div<Props>`
     background-color: #222;
 
     transform: translate(${props => props.posx}px, ${props => props.posy}px);
-    transition: transform 0.1s ease;
 
     cursor: ${props => props.drag == "true" ? 'grabbing' : 'grab'};
 `
@@ -39,7 +38,6 @@ export const WriteLetter = styled.div`
     top: 95%;
     left: 95%;
     transform: translate(-95%, -95%);
-
     background-color: transparent;
 
     &>img {

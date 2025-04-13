@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as S from './styles'
 
 interface LetterProps {
@@ -8,6 +8,7 @@ interface LetterProps {
     author: string 
     x: number
     y: number
+    template: string
 }
 
 type Props = {
@@ -15,7 +16,6 @@ type Props = {
 }
 
 function Letter({ Letters }: Props) {
-    const audioRef = useRef<HTMLAudioElement>(null)
 
     const [visibleIds, setVisibleIds] = useState<number[]>([])
 
@@ -28,27 +28,26 @@ function Letter({ Letters }: Props) {
     }, [Letters])
 
     const playAudio = (value: boolean) => {
-        if ( audioRef.current && !audioRef.current.onplaying) {
-            if (value) {
-                audioRef.current.src = './sounds/paperIn.wav'
-            } else {
-                audioRef.current.src = './sounds/paperOut.wav'
-            }
+            
 
-            audioRef.current.currentTime = 0
-            audioRef.current.volume = 0.035
-            audioRef.current.play()
+        if (value) {
+            const audio = new Audio('./sounds/paperOut.wav')
+            audio.volume = 0.03
+            audio.play()
+        } else {
+            const audio = new Audio('./sounds/paperIn.wav')
+            audio.volume = 0.03
+            audio.play()
         }
     }
 
     return (
         <>
             {Letters.map((letter) => (
-                <S.Letter isvisible={visibleIds.includes(letter.id)} onMouseLeave={() => {playAudio(false)}} onMouseEnter={() => {playAudio(true)}} key={letter.id} style={{position: 'absolute', top: `${letter.y - 200}px`, left: `${letter.x}px`}}>
+                <S.Letter key={letter.id} template={letter.template} isvisible={visibleIds.includes(letter.id)} onMouseLeave={() => {playAudio(false)}} onMouseEnter={() => {playAudio(true)}} style={{position: 'absolute', top: `${letter.y - 200}px`, left: `${letter.x}px`}}>
                     <h1>{letter.title}</h1>
-                    <h2>{letter.body}</h2>
+                    <h3>{letter.body}</h3>
                     <h2>{letter.author}</h2>
-                    <audio ref={audioRef}/>
                 </S.Letter>
             ))}
         </>
