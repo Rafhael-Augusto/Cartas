@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://admin_user:MQ8dL5YuD60uW5Lf2VGIM1Av9ey47oVH@dpg-cvu3qr1r0fns73e4cng0-a/lettersdb'))
+    'default': dj_database_url.config(default='postgresql://admin_user:MQ8dL5YuD60uW5Lf2VGIM1Av9ey47oVH@dpg-cvu3qr1r0fns73e4cng0-a/lettersdb')
 }
 
 
