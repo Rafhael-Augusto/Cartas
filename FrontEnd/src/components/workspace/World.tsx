@@ -128,7 +128,7 @@ function World(){
 
         const handleSubmit = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/letters/", {
+                const response = await fetch("https://cartas-1cc4.onrender.com/api/letters/", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
