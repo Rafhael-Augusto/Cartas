@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import Letter from '../letter/Letter'
 import Farlands from '../endBoards/Boards'
-import PlayMusic from '../backgroundMusic/Music'
+//import PlayMusic from '../backgroundMusic/Music'
 
 import * as S from './styles'
 
@@ -170,7 +170,6 @@ function World(){
 
     return (
         <>
-        <PlayMusic />
             <S.Camera onMouseMove={mouseMove} onMouseUp={mouseUp} onMouseLeave={mouseUp} onMouseDown={mouseDown} onClick={MouseClickDown} >
                 <S.World id='world' posx={position.x} posy={position.y} drag={dragging} size={worldSize}>
                     <Letter Letters={letters}/>
