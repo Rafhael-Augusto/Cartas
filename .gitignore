@@ -1,0 +1,38 @@
+# === Node.js / React ===
+node_modules/
+dist/
+.env
+.vite/
+*.log
+
+# === Django / Python ===
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+db.sqlite3
+.env
+.env.*
+
+# === Virtual Envs ===
+venv/
+env/
+*.egg-info/
+*.egg
+pip-log.txt
+
+# === IDEs ===
+.vscode/
+.idea/
+*.swp
+
+# === macOS / Linux ===
+.DS_Store
+Thumbs.db
+
+# === Others ===
+coverage/
+build/
+*.bak
