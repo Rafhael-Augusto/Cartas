@@ -20,7 +20,7 @@ export const BottomBoard = styled.div`
     position: fixed;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
     padding: 30px;
-    width: 10000px;
+    width: 15000px;
 
     bottom: 0;
 `
@@ -29,7 +29,7 @@ export const LeftBoard = styled.div`
     background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
     padding: 30px;
 
-    height: 10000px;
+    height: 15000px;
 
     left: 0;
 `
