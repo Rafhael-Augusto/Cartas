@@ -24,13 +24,13 @@ function PlayMusic() {
                 audioRef.current.play()
             }
 
-            audioRef.current.volume = 0.1
+            audioRef.current.volume = 0.05
         }
     }, [currentTrack, isPlaying])
 
     const PlayMusic = () => {
         if (audioRef.current) {
-            
+            audioRef.current.loop = true
             if (isPlaying) {
                 audioRef.current.pause()
             } else {
@@ -54,13 +54,22 @@ function PlayMusic() {
         setCurrentTrack((current) => current === 0 ? songs.length - 1 : current - 1)
     }
 
+    const changeVolume = (volume: number) => {
+        if (audioRef.current) {
+            audioRef.current.volume = volume
+        }
+    }
+
     return (
         <S.Wrapper>
+            <div>
+                <S.Arrow onClick={prevTrack}>{`<`}</S.Arrow>
+                <S.Pause onClick={() => {PlayMusic()}}>{!isPlaying ? '▶' : '⏸'}</S.Pause>
+                <S.Arrow onClick={nextTrack}>{`>`}</S.Arrow>
+            </div>
+
             <audio ref={audioRef} />
-            <input type="number" step={0.1} min={0} max={1} />
-            <S.Arrow onClick={prevTrack}>{`<`}</S.Arrow>
-            <S.Pause onClick={() => {PlayMusic()}}>{!isPlaying ? '▶ Play' : '⏸ Pause'}</S.Pause>
-            <S.Arrow onClick={nextTrack}>{`>`}</S.Arrow>
+            <input onChange={(e) => changeVolume(Number(e.target.value))} placeholder="volume" type="number" step={0.05} min={0} max={1} />
         </S.Wrapper>
     )
 }

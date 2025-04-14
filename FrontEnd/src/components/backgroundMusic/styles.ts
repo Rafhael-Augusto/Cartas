@@ -2,15 +2,43 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 8px;
+    left: 8px;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    padding: 4px;
 
     z-index: 1;
-    background-color: red;
+    background-color: rgba(0,0,0,0.5);
+    border: 2px solid white;
+    border-radius: 4px;
 
     * {
         border: none;
         border-radius: 4px;
+    }
+
+    &> input {
+        height: 24px;
+        width: 80px;
+        padding: 4px;
+        text-align: center;
+
+
+        &::placeholder {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    &> div {
+        display:flex;
+        align-items: center;
+        gap: 4px;
     }
 `
 
@@ -18,8 +46,8 @@ export const Pause = styled.button`
     background-color: white;
     text-align: center;
 
-    width: 64px;
-    height: 64px;
+    width: 40px;
+    height: 40px;
     margin: 0;
 `
 

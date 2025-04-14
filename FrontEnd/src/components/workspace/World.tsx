@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import Letter from '../letter/Letter'
 import Farlands from '../endBoards/Boards'
-//import PlayMusic from '../backgroundMusic/Music'
+import PlayMusic from '../backgroundMusic/Music'
 
 import * as S from './styles'
 
@@ -146,6 +146,9 @@ function World(){
             }
         }
 
+        setTitle('')
+        setBody('')
+        setAuthor('')
 
         handleSubmit()
     }
@@ -170,14 +173,15 @@ function World(){
 
     return (
         <>
+            <PlayMusic />
             <S.Camera onMouseMove={mouseMove} onMouseUp={mouseUp} onMouseLeave={mouseUp} onMouseDown={mouseDown} onClick={MouseClickDown} >
                 <S.World id='world' posx={position.x} posy={position.y} drag={dragging} size={worldSize}>
                     <Letter Letters={letters}/>
                     <Farlands />
                 </S.World>
 
-                <S.WriteLetter>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBGwKhJ-kv2vwL-IQtc4mdeW6qI_SlHeMTyg&s"
+                <S.WriteLetter onDragStart={(e) => e.preventDefault()}>
+                    <img src="/images/FeatherQuil.png"
                      alt=""
                      onClick={() => setIsOpen(!isOpen)}
                      />
@@ -186,12 +190,12 @@ function World(){
                      <audio ref={pencilRef}/>
                 </S.WriteLetter>
 
-            <S.Form onSubmit={PublishLetter} style={{display: isOpen ? 'block' : 'none'}}>
+            <S.Form onSubmit={(e) => {PublishLetter(e); setIsOpen(!isOpen)}} style={{display: isOpen ? 'block' : 'none'}}>
                 <h1>Escreva uma carta</h1>
                 <div>
-                    <S.Input maxLength={20} type="text" id="Title" placeholder='Titulo: ' onChange={(e) => setTitle(e.target.value)} onKeyDown={(e) => pencilSound(e)} />
-                    <S.Message wrap='soft' maxLength={300} required id="Body" placeholder='Mensagem: ' onChange={(e) => {bodyHandleChange(e)}} onKeyDown={(e) => pencilSound(e)} />
-                    <S.Input maxLength={20} type="text" id="Author" placeholder='Assinado: ' onChange={(e) => setAuthor(e.target.value)} onKeyDown={(e) => pencilSound(e)} />
+                    <S.Input maxLength={20} type="text" id="Title" placeholder='Titulo: ' onChange={(e) => setTitle(e.target.value)} value={title} onKeyDown={(e) => pencilSound(e)} />
+                    <S.Message wrap='soft' maxLength={300} required id="Body" placeholder='Mensagem: ' onChange={(e) => {bodyHandleChange(e)}} value={body} onKeyDown={(e) => pencilSound(e)} />
+                    <S.Input maxLength={20} type="text" id="Author" placeholder='Assinado: ' onChange={(e) => setAuthor(e.target.value)} value={author} onKeyDown={(e) => pencilSound(e)} />
                     <S.CreateLetter>Colar</S.CreateLetter>
                 </div>
             </S.Form>

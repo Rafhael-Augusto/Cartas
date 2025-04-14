@@ -41,10 +41,22 @@ export const WriteLetter = styled.div`
     background-color: transparent;
 
     &>img {
-        width:80px;
-        height:80px;
+        width:120px;
+        height:120px;
 
         cursor: pointer;
+
+        background-color: rgba(20,20,20, 0.6);
+
+        border: 4px solid white;
+        border-radius: 8px;
+        padding: 8px;
+
+        transition: all 0.2s ease;
+        &:hover {
+            
+            transform: scale(1.1)
+        }
     }
 `
 
