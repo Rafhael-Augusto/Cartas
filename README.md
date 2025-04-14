@@ -26,30 +26,30 @@ Este é o meu primeiro projeto full stack publicado! Uma aplicação onde usuár
 
 
 ✨ Funcionalidades
-- Criar cartas com nome e mensagem
+  Criar cartas com nome e mensagem
 
-- Cartas aparecem no “muro” com visual animado
+  Cartas aparecem no “muro” com visual animado
 
-- Atualização automática a cada 3 segundos
+  Atualização automática a cada 3 segundos
 
-- Pequeno media player embutido
+  Pequeno media player embutido
 
 
 🖼️ Créditos de imagem
-- A imagem usada no placeholder foi retirada do site Wannapik.com, de uso gratuito com atribuição:
-- Imagem desenhada por Wannapik.com
+  A imagem usada no placeholder foi retirada do site Wannapik.com, de uso gratuito com atribuição:
+  Imagem desenhada por Wannapik.com
 
 
 📦 Observações
-- Projeto feito com fins de aprendizado e prática full stack
-- Pode ser estendido no futuro com login/autenticação, likes, categorias de cartas e versão mobile
-- Está no ar com plano gratuito, então pode demorar alguns segundos para acordar 💤
+  Projeto feito com fins de aprendizado e prática full stack
+  Pode ser estendido no futuro com login/autenticação, likes, categorias de cartas e versão mobile
+  Está no ar com plano gratuito, então pode demorar alguns segundos para acordar 💤
 
 
 🚧 Projeto em construção 🚧
-- Este repositório está aberto para visualização, mas ainda não está pronto para uso local (voce pode tentar).
-- Estou trabalhando nas funcionalidades e estrutura do projeto. Em breve, adicionarei as instruções completas.
+  Este repositório está aberto para visualização, mas ainda não está pronto para uso local (voce pode tentar).
+  Estou trabalhando nas funcionalidades e estrutura do projeto. Em breve, adicionarei as instruções completas.
 
-- Fique à vontade para acompanhar o desenvolvimento! 😄
+  Fique à vontade para acompanhar o desenvolvimento! 😄
 
-- Feito com dedicação por Rafhael Augusto 💙
+  Feito com dedicação por Rafhael Augusto 💙
