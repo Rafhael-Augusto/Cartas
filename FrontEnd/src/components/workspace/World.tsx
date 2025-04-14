@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Letter from '../letter/Letter'
 import Farlands from '../endBoards/Boards'
 import PlayMusic from '../backgroundMusic/Music'
+import LoadScreen from '../loadingScreen/Loading'
 
 import * as S from './styles'
 
@@ -27,6 +28,8 @@ function World(){
     const [body, setBody] = useState("")
     const [author, setAuthor] = useState("")
     const [template, setTemplate] = useState("")
+
+    const [loading, setLoading] = useState(true)
     
     const [letters, setLetters] = useState<
     { id: number, title: string, body: string, author: string, x: number, y: number, template: string}[]>
@@ -34,9 +37,15 @@ function World(){
 
     useEffect(() => {
         const fetchLetters = async () => {
-            const res = await fetch('https://cartas-1cc4.onrender.com/api/letters/')
-            const data = await res.json()
-            setLetters(data)
+            try {
+                const res = await fetch('https://cartas-1cc4.onrender.com/api/letters/')
+                const data = await res.json()
+                setLetters(data)
+            } catch(err) {
+                console.log(err)
+            } finally {
+                setLoading(false)
+            }
         }
     
         fetchLetters()  // chama de início
@@ -174,6 +183,7 @@ function World(){
     return (
         <>
             <PlayMusic />
+            <LoadScreen isloading={loading} />
             <S.Camera onMouseMove={mouseMove} onMouseUp={mouseUp} onMouseLeave={mouseUp} onMouseDown={mouseDown} onClick={MouseClickDown} >
                 <S.World id='world' posx={position.x} posy={position.y} drag={dragging} size={worldSize}>
                     <Letter Letters={letters}/>
