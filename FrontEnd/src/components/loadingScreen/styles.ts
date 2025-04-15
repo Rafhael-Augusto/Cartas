@@ -21,5 +21,7 @@ export const Wrapper = styled.div`
         text-align: center;
         background-color: rgb(0, 0, 0, 0.5);
         width: 100%;
+
+        color: white;
     }
 `
