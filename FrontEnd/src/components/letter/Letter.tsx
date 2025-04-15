@@ -41,15 +41,25 @@ function Letter({ Letters }: Props) {
         }
     }
 
+    const showFullLetter = (id: number) => {
+        const selected = Letters.find((letterId) => letterId.id === id)
+
+        if (selected) {
+            return
+        }
+    }
+
     return (
         <>
             {Letters.map((letter) => (
-                <S.Letter key={letter.id} template={letter.template} isvisible={visibleIds.includes(letter.id)} onMouseLeave={() => {playAudio(false)}} onMouseEnter={() => {playAudio(true)}} style={{position: 'absolute', top: `${letter.y - 200}px`, left: `${letter.x}px`}}>
+                <S.Letter onClick={() => showFullLetter(letter.id)} key={letter.id} template={letter.template} isvisible={visibleIds.includes(letter.id)} onMouseLeave={() => {playAudio(false)}} onMouseEnter={() => {playAudio(true)}} style={{position: 'absolute', top: `${letter.y - 200}px`, left: `${letter.x}px`}}>
                     <h1>{letter.title}</h1>
                     <h3>{letter.body}</h3>
                     <h2>{letter.author}</h2>
                 </S.Letter>
             ))}
+
+
         </>
     )
 }

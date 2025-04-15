@@ -9,7 +9,7 @@ function LoadScreen({ isloading }: Prop) {
 
     return (
         <S.Wrapper style={{display: isloading ? 'flex' : 'none'}}>
-            <h1>Carregando</h1>
+            <h1>Carregando (isso pode levar um tempo)</h1>
         </S.Wrapper>
     )
 }
