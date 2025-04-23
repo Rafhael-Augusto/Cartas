@@ -4,7 +4,7 @@ Este é o meu primeiro projeto full stack publicado! Uma aplicação onde usuár
 
 🔗 **Acesse o projeto online:** (https://letters-azure.vercel.app/)
 
-⚠️ *Funciona apenas em desktop no momento. Versão mobile em desenvolvimento!*
+⚠️ *Funciona apenas em desktop no momento.
 
 ---
 
